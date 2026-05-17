@@ -1,12 +1,12 @@
 [X] Frontend HTML, CSS, JS (SVG Layers)
 [X] Backend Node.js + Express.js
-[X] Auth System: Token-based (JWT) with MongoDB Storage
+[X] Auth Firebase Auth (Now GitHub OAuth + Email/Pass)
 [X] Database: MongoDB (Azure Cosmos DB)
 [X] Admin Panel Protected /admin route with full dashboard 
+[X] Auth System: Token-based (JWT) with MongoDB Storage
 [X] Permissions: Group-Based Access Management (GBAM)
 [X] Logs: Audit logs for Admin/Manager actions
 [X] UI/UX: Mobile responsive and scalable version (optimized for all screens)
-[X] Auth: GitHub OAuth Integration (Verified & Stable)
 [X] UI: Consistent Dark-Tinted Dashboard/Landing Page Theme
-[ ] Security: Google reCAPTCHA v3 (Bot protection - Free tier)
-[ ] Git Sync: Merge Beta to Main for Azure CI/CD
+[X] Deployment: Azure App Service (CI/CD Pipeline Active)
+[X] Git Sync: Main branch synchronized with v1.1.0-STABLE

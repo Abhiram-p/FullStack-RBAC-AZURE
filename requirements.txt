@@ -1,0 +1,7 @@
+# Node.js Dependencies for Auth System
+express
+express-session
+firebase-admin
+bcrypt
+axios
+dotenv

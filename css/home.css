@@ -12,43 +12,146 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('../img/bg.png');
-    background-size: cover;
-    background-position: center;
+    background: #e8e8e8;
     font-family: 'roboto', sans-serif;
+    overflow-x: hidden;
 }
 
+/* ── Animation Keyframes ── */
+@keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeInCenter {
+    from { transform: translate(-50%, -40%); opacity: 0; }
+    to { transform: translate(-50%, -50%); opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* ── SVG background layer ── */
+.bg-semicircle {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    z-index: 0;
+    animation: slideUp 1s ease-out forwards;
+}
+
+.bg-girl {
+    position: fixed;
+    bottom: 60px;
+    left: -20px;
+    width: clamp(150px, 22vw, 380px);
+    height: auto;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    animation: slideInLeft 1s ease-out 0.3s forwards;
+}
+
+.bg-boy {
+    position: fixed;
+    bottom: 60px;
+    right: -20px;
+    width: clamp(130px, 20vw, 340px);
+    height: auto;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    animation: slideInRight 1s ease-out 0.3s forwards;
+}
+
+.bg-lock {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(150px, 22vw, 360px);
+    height: auto;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    animation: fadeInCenter 1.2s ease-out 0.5s forwards;
+}
+
+/* ── Container ── */
 .container{
     position: relative;
+    z-index: 10;
     width: 90%;
-    height: 87vh;
-    border: 5px solid #fff;
+    max-width: 1200px;
+    height: auto;
+    min-height: 60vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: clamp(20px, 5vw, 60px);
+    background: rgba(0, 0, 0, 0.7); /* Dark tint like admin dashboard */
+    backdrop-filter: blur(10px);    /* Increased blur like admin dashboard */
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
+    opacity: 0;
+    animation: scaleIn 0.8s ease-out 1s forwards;
 }
 
 .logout{
     position: absolute;
     top: 10px;
-    right: 0;
+    right: 10px;
     padding: 10px 20px;
     text-transform: capitalize;
-    font-size: 16px;
+    font-size: 14px;
     color: #fff;
-    background: none;
-    text-decoration: underline;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    text-decoration: none;
     cursor: pointer;
     outline: none;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: 0.3s;
+}
+
+.logout:hover {
+    background: #fff;
+    color: #000;
 }
 
 .greeting{
     font-family: 'dosis';
-    font-size: 60px;
+    font-size: clamp(32px, 8vw, 60px); 
     color: #fff;
     font-weight: 800;
     text-transform: capitalize;
     text-align: center;
     line-height: 1.2;
+}
+
+/* Mobile Tweaks */
+@media (max-width: 768px) {
+    .bg-girl, .bg-boy {
+        display: none;
+    }
+    .container {
+        width: 95%;
+        padding: 30px 15px;
+    }
 }

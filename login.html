@@ -4,25 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-
     <link rel="stylesheet" href="css/form.css">
-
 </head>
 <body>
+
+    <!-- Fixed background layers -->
+    <img class="bg-semicircle" src="img/bg_semicircle.svg" alt="">
+    <img class="bg-girl"       src="img/bg_girl.svg"       alt="">
+    <img class="bg-boy"        src="img/bg_boy.svg"        alt="">
 
     <div class="alert-box">
         <p class="alert"></p>
     </div>
 
-    <div class="form">
-        <h1 class="heading">login</h1>
-        <input type="email" placeholder="email" autocomplete="off" class="email" id="email" autocapitalize="none" required>
-        <input type="password" placeholder="password" autocomplete="off" class="password" id="password" required>
-        <button class="submit-btn">log in</button>
-        <button class="submit-btn github-btn" style="margin-top: 10px;">Sign in with GitHub</button>
-        <a href="/register" class="link">don't have an account? Register one</a>    </div>
+    <!-- Lock is the form backdrop -->
+    <div class="lock-form-wrapper">
+        <img class="bg-lock" src="img/bg_lock.svg" alt="">
+        <div class="form">
+            <h1 class="heading">login</h1>
+            <input type="email" placeholder="email" autocomplete="off" class="email" id="email" autocapitalize="none" required>
+            <input type="password" placeholder="password" autocomplete="off" class="password" id="password" required>
+            <button class="submit-btn">log in</button>
+            <button class="submit-btn github-btn" style="margin-top: 10px;">Sign in with GitHub</button>
+            <a href="/register" class="link">don't have an account? Register one</a>
+        </div>
+    </div>
 
     <script src="js/form.js"></script>
-    
 </body>
 </html>

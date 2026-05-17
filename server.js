@@ -123,6 +123,7 @@ app.get('/check-auth', async (req, res) => {
         const decoded = jwt.verify(token, JWT_SECRET);
         if (decoded.id === 'admin-id') return res.json({ ...decoded, hasDashboardAccess: true });
         const user = await User.findById(decoded.id).select('-password');
+        if (!user) return res.status(401).json('user not found');
         const hasDashboardAccess = await getDashboardAccess(user);
         res.json({ ...user._doc, id: user._id, hasDashboardAccess });
     } catch (err) { res.status(401).json('invalid token'); }
@@ -259,7 +260,7 @@ app.post('/update-role', authorize('canChangeRole'), async (req, res) => {
 app.post('/toggle-ban', authorize('canBan'), async (req, res) => {
     const { userId, banned } = req.body;
     try {
-        const user = await User.findByIdAndUpdate(userId, { banned });
+        await User.findByIdAndUpdate(userId, { banned });
         const userDoc = await User.findById(userId);
         await createLog(banned ? 'Banned User' : 'Unbanned User', userDoc.email, req.user.email);
         res.json('success');

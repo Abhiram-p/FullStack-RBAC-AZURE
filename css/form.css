@@ -12,104 +12,194 @@ body{
     position: relative;
     width: 100%;
     min-height: 100vh;
-    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('../img/bg.png');
-    background-size: cover;
-    background-position: center;
+    background: #e0e0e0;
     font-family: 'roboto', sans-serif;
+    overflow-x: hidden;
 }
 
-.form{
-    width: 400px;
+/* ── Animation Keyframes ── */
+@keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeInCenter {
+    from { transform: translate(-50%, -45%); opacity: 0; }
+    to { transform: translate(-50%, -50%); opacity: 1; }
+}
+
+@keyframes fadeUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* ── SVG background layers ── */
+.bg-semicircle {
+    position: fixed;
+    bottom: -30px;
+    left: 0;
+    width: 100%;
     height: auto;
-    color: #fff;
-    font-family: 'roboto', sans-serif;
+    pointer-events: none;
+    z-index: 1;
+    animation: slideUp 1s ease-out forwards;
 }
 
-.heading{
+.bg-girl {
+    position: fixed;
+    bottom: 50px;
+    left: -10px;
+    width: clamp(200px, 32vw, 540px);
+    height: auto;
+    pointer-events: none;
+    z-index: 3;
     opacity: 0;
-    text-transform: capitalize;
+    animation: slideInLeft 1s ease-out 0.3s forwards;
+}
+
+.bg-boy {
+    position: fixed;
+    bottom: 95px;
+    right: -10px;
+    width: clamp(180px, 28vw, 480px);
+    height: auto;
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0;
+    animation: slideInRight 1s ease-out 0.3s forwards;
+}
+
+/* ── Lock wrapper ── */
+.lock-form-wrapper {
+    position: relative;
+    z-index: 2;
+    height: clamp(400px, 65vh, 800px);
+    width: calc(clamp(400px, 65vh, 800px) / 1.278);
+    max-width: 90vw;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 1.2s ease-out 0.5s forwards;
+}
+
+.bg-lock {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.form {
+    position: absolute;
+    top: 32%;
+    left: 0;
+    width: 100%;
+    height: 68%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10% 6%;
+    color: #fff;
+}
+
+.heading {
+    opacity: 0;
     text-align: center;
-    font-size: 80px;
-    font-weight: 300;
-    margin-bottom: 50px;
+    font-size: clamp(24px, 4vw, 48px);
+    font-weight: 400;
+    margin-bottom: clamp(10px, 2vh, 20px);
+    color: #fff;
+    text-transform: capitalize;
 }
 
 input,
-.submit-btn{
+.submit-btn {
     opacity: 0;
-    width: 80%;
-    height: 35px;
+    width: 90%;
+    height: clamp(32px, 4vh, 40px);
     display: block;
-    margin: 20px auto;
+    margin: 5px auto;
     border-radius: 5px;
-    background: rgba(255, 255, 255, 0.3);
-    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fff;
-    padding: 15px;
-    transition: .5s;
+    padding: 0 12px;
+    transition: .4s;
+    font-size: clamp(12px, 1.5vw, 14px);
+}
+
+input.email { text-transform: none; }
+input::placeholder { color: rgba(255, 255, 255, 0.55); text-transform: capitalize; }
+
+input:focus,
+.submit-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+.submit-btn {
+    width: auto;
+    padding: 0 24px;
+    cursor: pointer;
+    margin-top: 15px;
+    border: 1px solid rgba(255,255,255,0.35);
     text-transform: capitalize;
 }
 
-input.email {
-    text-transform: none;
-}
-
-input::placeholder{
-    color: #fff;
-}
-
-input:focus,
-.submit-btn:hover{
-    background: #fff;
-    color: #000;
-}
-
-input:focus::placeholder{
-    color: #000;
-}
-
-.submit-btn{
-    width: auto;
-    padding: 0 20px;
-    cursor: pointer;
-    margin: 50px auto 0;
-    opacity: 0;
-}
-
-.link{
+.link {
     opacity: 0;
     text-align: center;
     text-transform: capitalize;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.6);
     display: block;
-    margin: 30px auto;
+    margin-top: 15px;
+    font-size: 12px;
+    text-decoration: underline;
+    animation: fadeUp 0.8s ease-out 1.2s forwards;
 }
 
-.link:hover{
-    color: #fff;
-}
-
-.alert-box{
-    position: absolute;
+.alert-box {
+    position: fixed;
     top: -100%;
     left: 50%;
     transform: translateX(-50%);
-    min-width: 150px;
+    min-width: 200px;
     max-width: 90%;
-    width: auto;
-    height: auto;
-    padding: 10px;
-    text-transform: capitalize;
-    background: rgb(255, 119, 119);
-    border-top: 10px solid rgb(255, 37, 37);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    padding: 15px;
+    background: #ff4747;
+    border-radius: 0 0 10px 10px;
     color: #fff;
-    font-family: 'roboto', sans-serif;
     text-align: center;
-    transition: 1s;
+    transition: 0.5s;
+    z-index: 100;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 480px) {
+    .bg-girl, .bg-boy {
+        display: none; 
+    }
+    .lock-form-wrapper {
+        width: 100%;
+        height: 70vh;
+    }
 }
