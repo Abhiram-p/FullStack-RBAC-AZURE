@@ -1,6 +1,12 @@
-Frontend HTML, CSS, JS (your existing files)
-Backend Node.js + Express.js
-Auth Firebase Auth (Google OAuth + email/password)
-Database Firebase Firestore (users, logs, bans)
-Admin Panel Protected /admin route with full dashboard 
-Deployment Azure App Service (free tier on student account)
+[X] Frontend HTML, CSS, JS (SVG Layers)
+[X] Backend Node.js + Express.js
+[X] Auth System: Token-based (JWT) with MongoDB Storage
+[X] Database: MongoDB (Azure Cosmos DB)
+[X] Admin Panel Protected /admin route with full dashboard 
+[X] Permissions: Group-Based Access Management (GBAM)
+[X] Logs: Audit logs for Admin/Manager actions
+[X] UI/UX: Mobile responsive and scalable version (optimized for all screens)
+[X] Auth: GitHub OAuth Integration (Verified & Stable)
+[X] UI: Consistent Dark-Tinted Dashboard/Landing Page Theme
+[ ] Security: Google reCAPTCHA v3 (Bot protection - Free tier)
+[ ] Git Sync: Merge Beta to Main for Azure CI/CD
