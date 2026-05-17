@@ -1,0 +1,6 @@
+Frontend HTML, CSS, JS (your existing files)
+Backend Node.js + Express.js
+Auth Firebase Auth (Google OAuth + email/password)
+Database Firebase Firestore (users, logs, bans)
+Admin Panel Protected /admin route with full dashboard 
+Deployment Azure App Service (free tier on student account)

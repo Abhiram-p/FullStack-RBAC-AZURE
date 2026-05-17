@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/home.css">
+    <style>
+        .container { 
+            flex-direction: column; 
+            height: auto; 
+            min-height: 87vh; 
+            padding: 20px; 
+            justify-content: flex-start;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 10px;
+            margin: 20px;
+        }
+        .controls { margin: 20px 0; width: 100%; display: flex; gap: 10px; }
+        input { padding: 10px; border-radius: 5px; border: none; }
+        .btn { padding: 10px 20px; border-radius: 5px; border: none; cursor: pointer; background: #fff; color: #000; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; color: #fff; background: rgba(255, 255, 255, 0.1); }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+        th { background: rgba(255, 255, 255, 0.2); text-transform: capitalize; }
+        .ban-btn { background: #ff4747; color: #fff; }
+        .unban-btn { background: #47ff78; color: #000; }
+        .delete-btn { background: #9b0000; color: #fff; margin-left: 5px; }
+        select { background: rgba(255, 255, 255, 0.2); color: #fff; border: none; padding: 5px; border-radius: 3px; }
+        option { background: #333; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="logout">log out</button>
+        <h1 class="greeting">Admin Dashboard</h1>
+        
+        <div class="controls">
+            <input type="text" id="new-group-name" placeholder="New Group Name">
+            <button class="btn" onclick="createGroup()">Create Group</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Reg. Type</th>
+                    <th>Role</th>
+                    <th>Group</th>
+                    <th>Last Login</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="user-table-body"></tbody>
+        </table>
+    </div>
+    <script src="js/admin.js"></script>
+</body>
+</html>
