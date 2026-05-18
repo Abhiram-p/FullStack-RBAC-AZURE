@@ -11,7 +11,7 @@ window.addEventListener('load', () => {
 
     // --- GITHUB OAUTH LOGIC ---
     const githubBtn = document.querySelector('.github-btn');
-    const GITHUB_CLIENT_ID = "Ov23lilerskpgrSOkoTP"; 
+    const GITHUB_CLIENT_ID = "Ov23lir5GIFRNQ4Q7bIP"; 
     const REDIRECT_URI = window.location.origin + "/login";
 
     if(githubBtn) {
